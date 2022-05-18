@@ -62,6 +62,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\OData Service\AlternateClient.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlternateClient.tt</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\OData Service\ODataClient.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,6 +75,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\OData Service\AlternateClient.ttinclude" />
     <None Include="Connected Services\OData Service\ConnectedService.json" />
     <None Include="Connected Services\OData Service\ODataClient.ttinclude" />
     <None Include="Connected Services\OData Service\ODataT4CodeGenFilesManager.ttinclude" />
@@ -85,6 +91,10 @@
     <EmbeddedResource Include="Connected Services\OData Service\OData ServiceCsdl.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connected Services\OData Service\AlternateClient.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AlternateClient.cs</LastGenOutput>
+    </Content>
     <Content Include="Connected Services\OData Service\ODataClient.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ODataClient.cs</LastGenOutput>
