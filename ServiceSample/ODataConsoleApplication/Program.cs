@@ -34,9 +34,9 @@ namespace ODataConsoleApplication
 
             //QueryExamples.ReadLegalEntities(context);
             //QueryExamples.ReadSalesOrderLines(context);
-            QueryExamples.CountOrderLines(context);
+            // QueryExamples.CountOrderLines(context);
             //QueryExamples.CountOccurenceOfEachNumber(context);
-            Console.ReadLine();
+            QueryExamples.LinqVersion(context);
         }
     }
 }
