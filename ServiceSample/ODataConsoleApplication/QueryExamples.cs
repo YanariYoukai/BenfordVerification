@@ -1,5 +1,6 @@
 ﻿using Microsoft.OData.Client;
 using ODataUtility.Microsoft.Dynamics.DataEntities;
+//using ODataUtility.Connected_Services.OData_Service.Microsoft.Dynamics.DataEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,83 @@ namespace ODataConsoleApplication
         {
             foreach (var salesLine in d365.SalesOrderLines)
             {
-                Console.WriteLine("Name: {0}", salesLine.LineAmount);
+                Console.WriteLine(salesLine.LineAmount);
             }
         }
+
+        public static void CountOrderLines(Resources d365)
+        {
+            Console.WriteLine("There are {0} total sales records.", d365.SalesOrderLines.Count());
+        }
+
+        public static void CountOccurenceOfEachNumber(Resources d365)
+        {
+            int zeroes = 0;
+            int ones = 0;
+            int twos = 0;
+            int threes = 0;
+            int fours = 0;
+            int fives = 0;
+            int sixes = 0;
+            int sevens = 0;
+            int eights = 0;
+            int nines = 0;
+            int minuses = 0;
+            int total = 0;
+
+            foreach(var line in d365.SalesOrderLines)
+            {
+                char firstNumber = line.LineAmount.ToString()[0] == '-' ? line.LineAmount.ToString()[1] : line.LineAmount.ToString()[0];
+                switch (firstNumber)
+                {
+                    case '1':
+                        ones++;
+                        total++;
+                        break;
+                    case '2':
+                        twos++;
+                        total++;
+                        break;
+                    case '3':
+                        threes++;
+                        total++;
+                        break;
+                    case '4':
+                        fours++;
+                        total++;
+                        break;
+                    case '5':
+                        fives++;
+                        total++;
+                        break;
+                    case '6':
+                        sixes++;
+                        total++;
+                        break;
+                    case '7':
+                        sevens++;
+                        total++;
+                        break;
+                    case '8':
+                        eights++;
+                        total++;
+                        break;
+                    case '9':
+                        nines++;
+                        total++;
+                        break;
+                    case '-':
+                        minuses++;
+                        total++;
+                        break;
+                    default:
+                        continue;
+
+                }
+            }
+            Console.WriteLine("There are {0} ones, {1} twos, {2} threes, {3} fours, {4} fives, {5} sixes, {6} sevens, {7} eights, {8} nines, {9} zeroes and {10} minuses for a total of {11} at the start of each line.", ones,twos,threes, fours, fives,sixes,sevens,eights,nines, zeroes, minuses, total);
+        }
+
 
         public static void GetInlineQueryCount(Resources d365)
         {

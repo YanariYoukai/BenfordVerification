@@ -3,6 +3,7 @@ using System.Net;
 using AuthenticationUtility;
 using Microsoft.OData.Client;
 using ODataUtility.Microsoft.Dynamics.DataEntities;
+//using ODataUtility.Connected_Services.OData_Service.Microsoft.Dynamics.DataEntities;
 
 namespace ODataConsoleApplication
 {
@@ -20,6 +21,7 @@ namespace ODataConsoleApplication
 
             Uri oDataUri = new Uri(ODataEntityPath, UriKind.Absolute);
             var context = new Resources(oDataUri);
+            
 
             context.SendingRequest2 += new EventHandler<SendingRequest2EventArgs>(delegate (object sender, SendingRequest2EventArgs e)
             {
@@ -31,7 +33,9 @@ namespace ODataConsoleApplication
             //TODO: Read OData enity and do some action on it
 
             //QueryExamples.ReadLegalEntities(context);
-            QueryExamples.ReadSalesOrderLines(context);
+            //QueryExamples.ReadSalesOrderLines(context);
+            //QueryExamples.CountOrderLines(context);
+            QueryExamples.CountOccurenceOfEachNumber(context);
             Console.ReadLine();
         }
     }
