@@ -26,24 +26,9 @@ namespace ODataConsoleApplication
 
             Dataset demo = new Dataset();
 
-            int attempts = 5;
-
-            while (true)
-            {
-                try
-                {
-                    demo.CreateDataset(context);
-                    break;
-                }catch(Exception e)
-                {
-                    if(--attempts != 0)
-                    {
-                        throw e;
-                    }
-                }
-            }
-            
+            demo.AttemptDatasetCreation(context);               
             demo.PrintResults();
+            Console.ReadLine();
 
 
 
