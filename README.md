@@ -1,2 +1,1 @@
-# OData Service Sample
 # BenfordVerification
