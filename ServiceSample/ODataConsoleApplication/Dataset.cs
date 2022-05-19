@@ -8,11 +8,11 @@ namespace ODataConsoleApplication
 {
     public class Dataset
     {
-        protected double collectionSize;
+        private double collectionSize;
         private bool populated;
-        protected Dictionary<char, int> data;
-        private Dictionary<char, double> expectedValues;
-        private Dictionary<char, double> permissibleDeviations;
+        private Dictionary<char, int> data;
+        private readonly Dictionary<char, double> expectedValues;
+        private readonly Dictionary<char, double> permissibleDeviations;
 
         public Dataset()
         {
@@ -89,7 +89,6 @@ namespace ODataConsoleApplication
 
         public void AttemptDatasetCreation(Resources d365)
         {
-            //TODO: Look into disabling individual stack traces and only print the exception message after last unsuccessful try, if time permits
             int attempts = 5;
 
             while (true)
@@ -126,13 +125,13 @@ namespace ODataConsoleApplication
                         suspiciousFlag = true;
                     }
 
-                    Console.WriteLine("Leading number {0} occurs in {1:0.00}% of cases. Expected occurence is {2}%.",
-                        row.Key, actualValue, expectedValues[row.Key]);
+                    Console.WriteLine("Leading number {0} occurs in {1} cases, which is {2:0.00}% of total. Expected occurence is {3}%.",
+                        row.Key, row.Value, actualValue, expectedValues[row.Key]);
                 }
 
                 Console.WriteLine(suspiciousFlag
-                    ? "There is a significant deviation from the expected values. Further investigation is recommended."
-                    : "The dataset falls within an acceptable statistical deviation.");
+                    ? "There is a significant deviation from the expected values. This in itself is not evidence of fraud, but further investigation is recommended."
+                    : "The dataset falls within the specified acceptable statistical deviation.");
             }
             else
             {
